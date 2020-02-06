@@ -12,18 +12,17 @@
     <!-- Bootstrap(offline/lokal) CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <script src="./res/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="./res/js/popper.min.js"></script>
+    <script src="./res/js/bootstrap.min.js"></script>
+    <script src="./utility/js/charform.js"></script>
+
     <title>P&P</title>
 </head>
 
 <body>
     <main>
-        <form>
-            <textarea id="textarea" placeholder="Enter Character JSON string"></textarea><br>
-            <button type="button" onclick="this.parentNode.nextElementSibling.hidden = false; buildChar(this.previousElementSibling.previousElementSibling.value); this.parentNode.hidden = true; ">uff</button>
-            <button type="button" onclick="this.parentNode.hidden = true; this.parentNode.nextElementSibling.hidden = false;">Create Blank</button>
-        </form>
-
-        <div class="container" hidden>
+        <div class="container">
             <div class="row">
                 <div class="col-3">
                     Name: <span id="name">Unnamed</span>
@@ -285,16 +284,33 @@
             <br>
             <button>Hide</button>
         </div>
-        <script src="/p&p2/utility/js/charform.js"></script>
         <script>
-            var lptrack = document.getElementById('lp').innerHTML;
+            var charObject = {
+                                "name":"N/A",
+                                "lvl": 1,
+                                "xp": 0,
+                                "lp": 10,
+                                "race":"N/A",
+                                "sex":"N/A",
+                                "wealth": 0,
+                                "fire":0,
+                                "water":0,
+                                "wind":0,
+                                "earth":0,
+                                "light":0,
+                                "dark":0,
+                                "neutral":0,
+                                "ini":1,
+                                "stk":1,
+                                "koe":1,
+                                "int":1
+                            };
+            parseURL(charObject);
+            buildChar(charObject);
         </script>
 
     </main>
-    <script src="/p&p2/res/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="/p&p2/res/js/popper.min.js"></script>
-    <script src="/p&p2/res/js/bootstrap.min.js"></script>
-
+    
 </body>
 
 </html>

@@ -1,3 +1,15 @@
+function parseURL(charObject)
+{
+    var query = location.search.substr(1);
+    var paramaters = query.split("&");
+    var splitPair;
+    var pair;
+    for (pair of paramaters) {
+        splitPair = pair.split("=");
+        charObject[splitPair[0]] = splitPair[1];
+    }
+}
+
 function validateChar(lvl, lp, fire, water, wind, earth, light, dark, neutral, ini, stk, koe, int)
 {
     if (lvl - 1 + 10 == lp + fire + water + wind + earth + light + dark + neutral + ini + stk + koe + int) {
@@ -9,10 +21,8 @@ function validateChar(lvl, lp, fire, water, wind, earth, light, dark, neutral, i
     }
 }
 
-function buildChar(jsonCharString)
+function buildChar(charObject)
 {
-    
-    var charObject = JSON.parse(jsonCharString);
     document.getElementById('name').innerHTML = charObject.name;
     document.getElementById('lvl').innerHTML = charObject.lvl;
     document.getElementById('xp').innerHTML = charObject.xp;

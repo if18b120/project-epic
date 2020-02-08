@@ -42,8 +42,10 @@ function buildChar(charObject)
     document.getElementById('koe').innerHTML = charObject.koe;
     document.getElementById('int').innerHTML = charObject.int;
 
-    document.getElementById('neededxp').innerHTML = calcNeededXp(parseInt(document.getElementById('lvl').innerHTML, 10));
-    calcHpMp();
+    document.getElementById('neededxp').innerHTML = calcNeededXp(charObject.lvl);
+    //calcHpMp();
+    document.getElementById('hp').innerHTML = calcHp(charObject);
+    document.getElementById('mp').innerHTML = calcMp(charObject);
 }
 
 function calcNeededXp(lvl)
@@ -52,7 +54,7 @@ function calcNeededXp(lvl)
     var step = 100;
     for (var i = 0; i <= lvl; i++)
     {
-        if ((i+1) % 5 == 0 && (i+1) != 0)
+        if ((i+1) % 5 == 0)
         {
             step += 100;
         }
@@ -61,12 +63,22 @@ function calcNeededXp(lvl)
     return neededxp;
 }
 
+function calcMp(charObject)
+{
+    return 5 + parseInt(charObject.int, 10) + Math.floor(charObject.koe/3) + Math.floor(charObject.ini/5);
+}
+
+function calcHp(charObject)
+{
+    return 5 + parseInt(charObject.koe, 10) + Math.floor(charObject.stk/3) + Math.floor(charObject.ini/5);
+}
+/*
 function calcHpMp()
 {
     document.getElementById('hp').innerHTML = 5 + parseInt(document.getElementById('koe').innerHTML, 10) + Math.floor(parseInt(document.getElementById('stk').innerHTML, 10)/3) + Math.floor(parseInt(document.getElementById('ini').innerHTML, 10)/5);
     document.getElementById('mp').innerHTML = 5 + parseInt(document.getElementById('int').innerHTML, 10) + Math.floor(parseInt(document.getElementById('koe').innerHTML, 10)/3) + Math.floor(parseInt(document.getElementById('ini').innerHTML, 10)/5);
 }
-
+*/
 function addxp(element)
 {
     var xpamount = parseInt(element.parentElement.nextElementSibling.firstElementChild.value, 10);
@@ -159,12 +171,5 @@ function disableMinus()
 
 }
 
-function calcMp()
-{
 
-}
 
-function calcHp()
-{
-    
-}

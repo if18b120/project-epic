@@ -33,13 +33,13 @@
                     <br>
                     <div class="row">
                         <div class="col-4 text-right">
-                            <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);" onclick="addxp(this)">
+                            <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="addxp(this, charObject);">
                                 <g>
                                     <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                     <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
                                 </g>
                             </svg>
-                            <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                            <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);">
                                 <g>
                                     <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                     <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
@@ -279,16 +279,12 @@
                 <button onclick="">Save</button>
             </div>
         </div>
-        <div hidden>
-            <textarea></textarea>
-            <br>
-            <button>Hide</button>
-        </div>
         <script>
             var charObject = {
                                 "name":"N/A",
                                 "lvl": 1,
                                 "xp": 0,
+                                "neededxp": 0,
                                 "lp": 10,
                                 "race":"N/A",
                                 "sex":"N/A",
@@ -306,7 +302,7 @@
                                 "int":1
                             };
             parseURL(charObject);
-            window.setInterval(buildChar(charObject), 200);
+            window.setInterval(function(){buildChar(charObject);}, 200);
         </script>
 
     </main>

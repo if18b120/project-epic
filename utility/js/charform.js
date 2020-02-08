@@ -8,11 +8,17 @@ function parseURL(charObject)
         splitPair = pair.split("=");
         charObject[splitPair[0]] = splitPair[1];
     }
+    charObject.neededxp = calcNeededXp(charObject.lvl);
 }
 
-function validateChar(lvl, lp, fire, water, wind, earth, light, dark, neutral, ini, stk, koe, int)
+function buildUrlQuery(charObject)
 {
-    if (lvl - 1 + 10 == lp + fire + water + wind + earth + light + dark + neutral + ini + stk + koe + int) {
+    location.search = "name="+charObject.name+"&lvl="+charObject.lvl+"&xp="+charObject.xp+"&lp="+charObject.lp+"&race="+charObject.race+"&sex="+charObject.sex+"&wealth="+charObject.wealth+"&fire="+charObject.fire+"&water="+charObject.water+"&wind="+charObject.wind+"&earth="+charObject.earth+"&light="+charObject.light+"&dark="+charObject.dark+"&neutral="+charObject.neutral+"&ini="+charObject.ini+"&stk="+charObject.stk+"&koe="+charObject.koe+"&int="+charObject.int;
+}
+
+function validateChar(charObject)
+{
+    if (lvl - 1 + 10 == charObject.lp + charObject.fire + charObject.water + charObject.wind + charObject.earth + charObject.light + charObject.dark + charObject.neutral + charObject.ini + charObject.stk + charObject.koe + charObject.int) {
         return true;
     }
     else
@@ -41,11 +47,12 @@ function buildChar(charObject)
     document.getElementById('stk').innerHTML = charObject.stk;
     document.getElementById('koe').innerHTML = charObject.koe;
     document.getElementById('int').innerHTML = charObject.int;
-
-    document.getElementById('neededxp').innerHTML = calcNeededXp(charObject.lvl);
+    
+    document.getElementById('neededxp').innerHTML = charObject.neededxp;
     //calcHpMp();
     document.getElementById('hp').innerHTML = calcHp(charObject);
     document.getElementById('mp').innerHTML = calcMp(charObject);
+    buildUrlQuery(charObject);
 }
 
 function calcNeededXp(lvl)
@@ -72,37 +79,35 @@ function calcHp(charObject)
 {
     return 5 + parseInt(charObject.koe, 10) + Math.floor(charObject.stk/3) + Math.floor(charObject.ini/5);
 }
-/*
-function calcHpMp()
-{
-    document.getElementById('hp').innerHTML = 5 + parseInt(document.getElementById('koe').innerHTML, 10) + Math.floor(parseInt(document.getElementById('stk').innerHTML, 10)/3) + Math.floor(parseInt(document.getElementById('ini').innerHTML, 10)/5);
-    document.getElementById('mp').innerHTML = 5 + parseInt(document.getElementById('int').innerHTML, 10) + Math.floor(parseInt(document.getElementById('koe').innerHTML, 10)/3) + Math.floor(parseInt(document.getElementById('ini').innerHTML, 10)/5);
-}
-*/
-function addxp(element)
-{
-    var xpamount = parseInt(element.parentElement.nextElementSibling.firstElementChild.value, 10);
-    var neededxp = parseInt(document.getElementById('neededxp').innerHTML, 10);
-    var currentxp = parseInt(document.getElementById('xp').innerHTML, 10);
-    var lvl;
-    document.getElementById('xp').innerHTML = currentxp + xpamount;
-    element.parentElement.nextElementSibling.firstElementChild.value = "";
-    while (currentxp + xpamount >= neededxp)
-    {
-        lvl = parseInt(document.getElementById('lvl').innerHTML, 10);
-        document.getElementById('lvl').innerHTML = lvl + 1;
-        neededxp = calcNeededXp(document.getElementById('lvl').innerHTML);
-        document.getElementById('neededxp').innerHTML = neededxp;
-        document.getElementById('lp').innerHTML = parseInt(document.getElementById('lp').innerHTML, 10) + 3;
-    }
-    lptrack = parseInt(document.getElementById('lp').innerHTML, 10);
 
+function checkLevelUp(charObject)
+{
+    while(charObject.xp > charObject.neededxp)
+    {
+        charObject.lvl++;
+        charObject.neededxp = calcNeededXp(charObject.lvl);
+    }
+}
+
+function addxp(element, charObject)
+{
+    charObject.xp = parseInt(charObject.xp, 10) + parseInt(element.parentElement.nextElementSibling.firstElementChild.value, 10);
+    checkLevelUp(charObject);
 }
 
 function subxp()
 {
 
+}
 
+function buttonMouseOver(element)
+{
+    element.firstElementChild.firstElementChild.style = 'fill:#909090; fill-opacity:0.5;';
+}
+
+function buttonMouseOut(element)
+{
+    element.firstElementChild.firstElementChild.style = 'fill:#FFFFFF;';
 }
 
 function pluskey(event, element)

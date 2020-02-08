@@ -9,11 +9,12 @@ function parseURL(charObject)
         charObject[splitPair[0]] = splitPair[1];
     }
     charObject.neededxp = calcNeededXp(charObject.lvl);
+    copyCharObject(charObject, checkObject);
 }
 
 function buildUrlQuery(charObject)
 {
-    location.search = "name="+charObject.name+"&lvl="+charObject.lvl+"&xp="+charObject.xp+"&lp="+charObject.lp+"&race="+charObject.race+"&sex="+charObject.sex+"&wealth="+charObject.wealth+"&fire="+charObject.fire+"&water="+charObject.water+"&wind="+charObject.wind+"&earth="+charObject.earth+"&light="+charObject.light+"&dark="+charObject.dark+"&neutral="+charObject.neutral+"&ini="+charObject.ini+"&stk="+charObject.stk+"&koe="+charObject.koe+"&int="+charObject.int;
+    history.replaceState(charObject, "Char update", location.pathname + "?name="+charObject.name+"&lvl="+charObject.lvl+"&xp="+charObject.xp+"&lp="+charObject.lp+"&race="+charObject.race+"&sex="+charObject.sex+"&wealth="+charObject.wealth+"&fire="+charObject.fire+"&water="+charObject.water+"&wind="+charObject.wind+"&earth="+charObject.earth+"&light="+charObject.light+"&dark="+charObject.dark+"&neutral="+charObject.neutral+"&ini="+charObject.ini+"&stk="+charObject.stk+"&koe="+charObject.koe+"&int="+charObject.int);
 }
 
 function validateChar(charObject)
@@ -52,7 +53,13 @@ function buildChar(charObject)
     //calcHpMp();
     document.getElementById('hp').innerHTML = calcHp(charObject);
     document.getElementById('mp').innerHTML = calcMp(charObject);
-    buildUrlQuery(charObject);
+    //buildUrlQuery(charObject);
+    if(!compareCharObject(charObject, checkObject))
+    {
+        copyCharObject(charObject, checkObject);
+        buildUrlQuery(charObject);
+    }
+    
 }
 
 function calcNeededXp(lvl)
@@ -78,6 +85,28 @@ function calcMp(charObject)
 function calcHp(charObject)
 {
     return 5 + parseInt(charObject.koe, 10) + Math.floor(charObject.stk/3) + Math.floor(charObject.ini/5);
+}
+
+function compareCharObject(charObject1, charObject2)
+{
+    var part;
+    for (part in charObject1) 
+    {
+        if(charObject1[part] != charObject2[part])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+function copyCharObject(charObject1, charObject2)
+{
+    var part;
+    for (part in charObject1) 
+    {
+        charObject2[part] = charObject1[part];
+    }
 }
 
 function checkLevelUp(charObject)

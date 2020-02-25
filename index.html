@@ -70,14 +70,14 @@
                             <div class="row">
                                 <div class="col-3">
                                     Fire<br>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="fire-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
                                         </g>
                                     </svg>
                                     <span id="fire">0</span>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);" onclick="pluskey(event, this)">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="fire-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
@@ -88,7 +88,7 @@
                                     Water<br>
 
                                     <!--minus-->
-                                    <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="water-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
@@ -97,7 +97,7 @@
                                     <span id="water">0</span>
 
                                     <!--plus-->
-                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey"  onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="water-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
@@ -106,14 +106,14 @@
                                 </div>
                                 <div class="col-3">
                                     Wind<br>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="wind-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
                                         </g>
                                     </svg>
                                     <span id="wind">0</span>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey"  onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="wind-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
@@ -122,14 +122,14 @@
                                 </div>
                                 <div class="col-3">
                                     Earth<br>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="earth-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
                                         </g>
                                     </svg>
                                     <span id="earth">0</span>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey"  onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="earth-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
@@ -142,14 +142,14 @@
                             <div class="row">
                                 <div class="col-3">
                                     Light<br>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="light-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
                                         </g>
                                     </svg>
                                     <span id="light">0</span>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="light-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
@@ -158,14 +158,14 @@
                                 </div>
                                 <div class="col-3">
                                     Dark<br>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="dark-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
                                         </g>
                                     </svg>
                                     <span id="dark">0</span>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="dark-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
@@ -174,17 +174,17 @@
                                 </div>
                                 <div class="col-3">
                                     Neutral<br>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="neutral-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
                                         </g>
                                     </svg>
                                     <span id="neutral">0</span>
-                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);">
+                                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="neutral-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                         <g>
                                             <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;" onmouseover="this.style='fill:#909090; fill-opacity:0.5;'" onmouseout="this.style='fill:#FFFFFF; fill-opacity:0.5;'"/>
-                                            <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z" onmouseover="previousElementSibling.style='fill:#909090; fill-opacity:0.5;'" onmouseout="previousElementSibling.style='fill:#FFFFFF; fill-opacity:0.5;'"/>
+                                            <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
                                         </g>
                                     </svg>
                                 </div>
@@ -199,14 +199,14 @@
                     <div class="row">
                         <div class="col-6">
                             INI:
-                            <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                            <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="ini-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                 <g>
                                     <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                     <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
                                 </g>
                             </svg>
                             <span id="ini">1</span>
-                            <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);">
+                            <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="ini-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                 <g>
                                     <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                     <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
@@ -215,14 +215,14 @@
                         </div>
                         <div class="col-6">
                             STK:
-                            <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                            <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="stk-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                 <g>
                                     <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                     <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
                                 </g>
                             </svg>
                             <span id="stk">1</span>
-                            <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);">
+                            <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="stk-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                 <g>
                                     <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                     <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
@@ -238,14 +238,14 @@
                         </div>
                         <div class="col-6">
                             KOE: 
-                            <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                            <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="koe-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                 <g>
                                     <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                     <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
                                 </g>
                             </svg>
                             <span id="koe">1</span>
-                            <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);">
+                            <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="koe-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                 <g>
                                     <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                     <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
@@ -257,14 +257,14 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             INT:
-                            <svg height="15" width="15" viewBox="0 0 100 100" onmouseover="minuskey(event, this);" onmouseout="minuskey(event, this);">
+                            <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="int-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
                                 <g>
                                     <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                     <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
                                 </g>
                             </svg>
                             <span id="int">1</span>
-                            <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" onmouseover="pluskey(event, this);" onmouseout="pluskey(event, this);">
+                            <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="int-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                 <g>
                                     <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                     <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>

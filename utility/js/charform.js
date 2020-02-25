@@ -50,10 +50,8 @@ function buildChar(charObject)
     document.getElementById('int').innerHTML = charObject.int;
     
     document.getElementById('neededxp').innerHTML = charObject.neededxp;
-    //calcHpMp();
     document.getElementById('hp').innerHTML = calcHp(charObject);
     document.getElementById('mp').innerHTML = calcMp(charObject);
-    //buildUrlQuery(charObject);
     if(!compareCharObject(charObject, checkObject))
     {
         copyCharObject(charObject, checkObject);
@@ -139,71 +137,28 @@ function buttonMouseOut(element)
     element.firstElementChild.firstElementChild.style = 'fill:#FFFFFF;';
 }
 
-function pluskey(event, element)
+function pluskey(element)
 {
-    if (event.type == 'click')
+    var id = element.id.split("-");
+    id = id[0];
+    if(charObject.lp > 0)
     {
-        if (lptrack > 0)
-        {
-            var mem = element.previousElementSibling.innerHTML;
-            element.previousElementSibling.innerHTML = parseInt(mem, 10) + 1;
-            mem = document.getElementById('lptxt').innerHTML;
-            document.getElementById('lptxt').innerHTML = mem - 1;
-            lptrack--;
-            if (lptrack <= 0)
-            {
-                disablePlus();
-            }
-        }
-    }
-    else if (event.type == 'mouseover')
-    {
-        if (lptrack > 0)
-        {
-            element.firstElementChild.firstElementChild.style = 'fill:#909090; fill-opacity:0.5;';
-        }
-    }
-    else if (event.type == 'mouseout')
-    {
-        if (lptrack > 0)
-        {
-            element.firstElementChild.firstElementChild.style = 'fill:#FFFFFF;';
-        }
-    }
-}
-
-function disablePlus()
-{
-    plus = document.getElementsByClassName('pluskey');
-
-    for (var i = 0; i < plus.length; i++)
-    {
-        plus[i].firstElementChild.firstElementChild.style = 'fill:#FFFFFF;';
-        plus[i].style = 'fill-opacity:0.2';
-    }
-}
-
-function minuskey(event, element)
-{
-    if (event.type == 'click')
-    {
-
-    }
-    else if (event.type == 'mouseover')
-    {
-        element.firstElementChild.firstElementChild.style = 'fill:#909090; fill-opacity:0.5;';
-    }
-    else if (event.type == 'mouseout')
-    {
-        element.firstElementChild.firstElementChild.style = 'fill:#FFFFFF;';
+    	if((id == 'ini' || id == 'stk' || id == 'koe' || id == 'int') || ((id == 'fire' || id == 'water' || id == 'wind' || id == 'earth' || id == 'dark' || id == 'light') && charObject[id] < 5) || (id == 'neutral' && charObject[id] < 3))
+    	{
+    		charObject[id]++;
+    		charObject.lp--;
+    	}
     }
 }
 
 
-function disableMinus()
+
+function minuskey(element)
 {
-
+    var id = element.id.substr(0,3);
+	if((id == 'ini' || id == 'stk' || id == 'koe' || id == 'int') && charObject[id] > 1)
+	{
+		charObject[id]--;
+		charObject.lp++;
+	}
 }
-
-
-

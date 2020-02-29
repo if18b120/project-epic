@@ -25,7 +25,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                    Name: <span id="name">Unnamed</span>
+                    Name: 
+                    <span class="openModify">
+                        <span id="name">Unnamed</span>
+                        <svg height="15" width="15" viewBox="0 0 100 100" onclick="modifyText(this);">
+                            <path style="fill:#000000;" d="m0 20 L30 50 L50 50 L50 30 L20 0 L50 0 L70 20 L70 50 L100 80 L100 100 L80 100 L50 70 L20 70 L0 50z"/>
+                        </svg>
+                    </span>
+                    <span id="changeName" hidden>
+                        <textarea>Change Name</textarea>
+                        <svg height="15" width="15" viewBox="0 0 90 90" onclick="modifyText(this);">
+                            <path style="fill:#000000;" d="m0 50 L10 40 L30 60 L80 10 L90 20 L30 80z"/>
+                        </svg>
+                    </span>
                     <br>
                     Level: <span id="lvl">0</span>
                     <br>
@@ -52,14 +64,57 @@
                     </div>
                     Lp: <span id="lp">10</span>
                     <br>
-                    Race: <span id="race">N/A</span>
+                    Race: 
+                    <span class="openModify">
+                        <span id="race">N/A</span>
+                        <svg height="15" width="15" viewBox="0 0 100 100" onclick="modifyText(this);">
+                            <path style="fill:#000000;" d="m0 20 L30 50 L50 50 L50 30 L20 0 L50 0 L70 20 L70 50 L100 80 L100 100 L80 100 L50 70 L20 70 L0 50z"/>
+                        </svg>
+                    </span>
+                    <span id="changeRace" hidden>
+                        <textarea>Change Race</textarea>
+                        <svg height="15" width="15" viewBox="0 0 90 90" onclick="modifyText(this);">
+                            <path style="fill:#000000;" d="m0 50 L10 40 L30 60 L80 10 L90 20 L30 80z"/>
+                        </svg>
+                    </span>
                     <br>
-                    Sex: <span id="sex">N/A</span>
+                    Sex: 
+                    <span class="openModify">
+                        <span id="sex">N/A</span>
+                        <svg height="15" width="15" viewBox="0 0 100 100" onclick="modifyText(this);">
+                            <path style="fill:#000000;" d="m0 20 L30 50 L50 50 L50 30 L20 0 L50 0 L70 20 L70 50 L100 80 L100 100 L80 100 L50 70 L20 70 L0 50z"/>
+                        </svg>
+                    </span>
+                    <span id="changeSex" hidden>
+                        <textarea>Change Sex</textarea>
+                        <svg height="15" width="15" viewBox="0 0 90 90" onclick="modifyText(this);">
+                            <path style="fill:#000000;" d="m0 50 L10 40 L30 60 L80 10 L90 20 L30 80z"/>
+                        </svg>
+                    </span>
                     <br>
                     HP: <span id="hp">6</span>
                     MP: <span id="mp">6</span>
                     <br>
                     Wealth: <span id="wealth">0</span>
+                    <div class="row">
+                        <div class="col-4 text-right">
+                            <svg height="15" width="15" viewBox="0 0 100 100" id="addWealth" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="changeWealth(this);">
+                                <g>
+                                    <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
+                                    <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
+                                </g>
+                            </svg>
+                            <svg height="15" width="15" viewBox="0 0 100 100" id="subWealth" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="changeWealth(this);">
+                                <g>
+                                    <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
+                                    <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="col-8" style="padding:0;">
+                            <input type="text" style="width: 100%" placeholder="Mannie">
+                        </div>
+                    </div>
                 </div>
 
 
@@ -183,7 +238,7 @@
                                     <span id="neutral">0</span>
                                     <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="neutral-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
                                         <g>
-                                            <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;" onmouseover="this.style='fill:#909090; fill-opacity:0.5;'" onmouseout="this.style='fill:#FFFFFF; fill-opacity:0.5;'"/>
+                                            <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
                                             <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
                                         </g>
                                     </svg>
@@ -275,8 +330,20 @@
                 </div>
             </div>
             <div class="text-right">
-                <button>Reset</button>
-                <button onclick="">Save</button>
+                    Skills<br>
+                    <svg height="15" width="15" viewBox="0 0 100 100" class="minuskey" id="skill-minus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="minuskey(this);">
+                        <g>
+                            <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
+                            <path style="fill:#EF0000;" d="M5 41 h90 v18 h-90 v-18z"/>
+                        </g>
+                    </svg>
+                    <span id="skill">0</span>
+                    <svg height="15" width="15" viewBox="0 0 100 100" class="pluskey" id="skill-plus" onmouseover="buttonMouseOver(this);" onmouseout="buttonMouseOut(this);" onclick="pluskey(this);">
+                        <g>
+                            <rect height="100" width="100" style="fill:#FFFFFF; fill-opacity:0.5;"/>
+                            <path style="fill:#00D000;" d="M41 5 h18 v36 h36 v18 h-36 v36 h-18 v-36 h-36 v-18 h36 v-36z"/>
+                        </g>
+                    </svg>
             </div>
         </div>
         <script>
@@ -299,7 +366,8 @@
                                 "ini":1,
                                 "stk":1,
                                 "koe":1,
-                                "int":1
+                                "int":1,
+                                "skill":0
                             };
             var checkObject = {
                                 "name":"N/A",
@@ -320,10 +388,12 @@
                                 "ini":1,
                                 "stk":1,
                                 "koe":1,
-                                "int":1
+                                "int":1,
+                                "skill":0
                             };
             parseURL(charObject);
-            window.setInterval(function(){buildChar(charObject);}, 200);
+            buildChar(charObject);
+            //window.setInterval(function(){buildChar(charObject);}, 200);
         </script>
 
     </main>

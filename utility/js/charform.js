@@ -14,7 +14,7 @@ function parseURL(charObject)
 
 function buildUrlQuery(charObject)
 {
-    history.replaceState(charObject, "Char update", location.pathname + "?name="+charObject.name+"&lvl="+charObject.lvl+"&xp="+charObject.xp+"&lp="+charObject.lp+"&race="+charObject.race+"&sex="+charObject.sex+"&wealth="+charObject.wealth+"&fire="+charObject.fire+"&water="+charObject.water+"&wind="+charObject.wind+"&earth="+charObject.earth+"&light="+charObject.light+"&dark="+charObject.dark+"&neutral="+charObject.neutral+"&ini="+charObject.ini+"&stk="+charObject.stk+"&koe="+charObject.koe+"&int="+charObject.int);
+    history.replaceState(charObject, "Char update", location.pathname + "?name="+charObject.name+"&lvl="+charObject.lvl+"&xp="+charObject.xp+"&lp="+charObject.lp+"&race="+charObject.race+"&sex="+charObject.sex+"&wealth="+charObject.wealth+"&fire="+charObject.fire+"&water="+charObject.water+"&wind="+charObject.wind+"&earth="+charObject.earth+"&light="+charObject.light+"&dark="+charObject.dark+"&neutral="+charObject.neutral+"&ini="+charObject.ini+"&stk="+charObject.stk+"&koe="+charObject.koe+"&int="+charObject.int+"&skill="+charObject.skill);
 }
 
 function validateChar(charObject)
@@ -48,6 +48,7 @@ function buildChar(charObject)
     document.getElementById('stk').innerHTML = charObject.stk;
     document.getElementById('koe').innerHTML = charObject.koe;
     document.getElementById('int').innerHTML = charObject.int;
+    document.getElementById('skill').innerHTML = charObject.skill;
     
     document.getElementById('neededxp').innerHTML = charObject.neededxp;
     document.getElementById('hp').innerHTML = calcHp(charObject);
@@ -109,9 +110,10 @@ function copyCharObject(charObject1, charObject2)
 
 function checkLevelUp(charObject)
 {
-    while(charObject.xp > charObject.neededxp)
+    while(charObject.xp >= charObject.neededxp)
     {
         charObject.lvl++;
+        charObject.lp = parseInt(charObject.lp, 10) + 3;
         charObject.neededxp = calcNeededXp(charObject.lvl);
     }
 }
@@ -119,7 +121,9 @@ function checkLevelUp(charObject)
 function addxp(element, charObject)
 {
     charObject.xp = parseInt(charObject.xp, 10) + parseInt(element.parentElement.nextElementSibling.firstElementChild.value, 10);
+    element.parentElement.nextElementSibling.firstElementChild.value = "";
     checkLevelUp(charObject);
+    buildChar(charObject);
 }
 
 function subxp()
@@ -141,24 +145,69 @@ function pluskey(element)
 {
     var id = element.id.split("-");
     id = id[0];
-    if(charObject.lp > 0)
+    if(charObject.lp)
     {
-    	if((id == 'ini' || id == 'stk' || id == 'koe' || id == 'int') || ((id == 'fire' || id == 'water' || id == 'wind' || id == 'earth' || id == 'dark' || id == 'light') && charObject[id] < 5) || (id == 'neutral' && charObject[id] < 3))
+    	if((id == 'ini' || id == 'stk' || id == 'koe' || id == 'int') || ((id == 'fire' || id == 'water' || id == 'wind' || id == 'earth' || id == 'dark' || id == 'light') && charObject[id] < 5) || (id == 'neutral' && charObject[id] < 3) || id == 'skill')
     	{
     		charObject[id]++;
     		charObject.lp--;
     	}
+    	buildChar(charObject);
     }
 }
 
-
-
 function minuskey(element)
 {
-    var id = element.id.substr(0,3);
-	if((id == 'ini' || id == 'stk' || id == 'koe' || id == 'int') && charObject[id] > 1)
+    var id = element.id.split("-");
+    id = id[0];
+	if(((id == 'ini' || id == 'stk' || id == 'koe' || id == 'int') && charObject[id] >= 1) || (id == 'skill' && charObject[id] > 0) || ((id == 'fire' || id == 'water' || id == 'wind' || id == 'earth' || id == 'dark' || id == 'light') && charObject[id] > 0))
 	{
 		charObject[id]--;
 		charObject.lp++;
 	}
+	buildChar(charObject);
+}
+
+function modifyText(element)
+{
+	if(element.parentElement.className == "openModify")
+	{
+		element.parentElement.setAttribute("hidden", "");
+		element.parentElement.nextElementSibling.removeAttribute("hidden");
+		element.parentElement.nextElementSibling.firstElementChild.value = charObject[element.previousElementSibling.id];
+	}
+	else
+	{
+		element.parentElement.setAttribute("hidden", "");
+		element.parentElement.previousElementSibling.removeAttribute("hidden");
+		if(element.parentElement.id == "changeName")
+		{
+			charObject.name = element.previousElementSibling.value;
+			buildChar(charObject);
+		}
+		else if(element.parentElement.id == "changeRace")
+		{
+			charObject.race = element.previousElementSibling.value;
+			buildChar(charObject);
+		}
+		else if(element.parentElement.id == "changeSex")
+		{
+			charObject.sex = element.previousElementSibling.value;
+			buildChar(charObject);
+		}
+	}
+}
+
+function changeWealth(element)
+{
+	if (element.id == "addWealth")
+	{
+		charObject.wealth = parseInt(charObject.wealth, 10) + parseInt(element.parentElement.nextElementSibling.firstElementChild.value, 10);
+	}
+	else if(element.id == "subWealth" && charObject.wealth >= parseInt(element.parentElement.nextElementSibling.firstElementChild.value, 10))
+	{
+		charObject.wealth = parseInt(charObject.wealth, 10) - parseInt(element.parentElement.nextElementSibling.firstElementChild.value, 10);
+	}
+	element.parentElement.nextElementSibling.firstElementChild.value = "";
+	buildChar(charObject);
 }
